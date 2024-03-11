@@ -50,8 +50,15 @@
   }
 
   #textInput {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-    display: none;
+  #voiceInput {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -83,34 +90,46 @@
   </div>
 
   <textarea id="textInput" rows="4" placeholder="Enter text here"></textarea>
+  <textarea id="voiceInput" rows="4" placeholder="Transcribed text will appear here"></textarea>
 </div>
 
 <script>
   function startVoiceToText() {
-    alert('Voice to Text functionality will be implemented here');
+    let recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+
+    recognition.onresult = function(event) {
+      let result = event.results[event.results.length - 1][0].transcript;
+      document.getElementById('voiceInput').value = result;
+    };
+
+    recognition.onerror = function(event) {
+      console.error('Speech recognition error detected: ' + event.error);
+    };
+
+    recognition.start();
   }
-  
+
   function startTextToVoice() {
     let text = prompt("Enter the text you want to convert to speech:");
     
-if (text !== null && text.trim() !== "") {
-    document.getElementById('textInput').style.display = 'block';
-    document.getElementById('textInput').value = text;
-    
-    let utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-GB'; // Specifying UK English
-    window.speechSynthesis.speak(utterance);
-} else {
-    alert('Please enter some text.');
-}
-
-
+    if (text !== null && text.trim() !== "") {
+        document.getElementById('textInput').value = text;
+        
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-GB'; // Specifying UK English
+        window.speechSynthesis.speak(utterance);
+    } else {
+        alert('Please enter some text.');
+    }
   }
-  
+
   function setReminder() {
     alert('Set Reminder functionality will be implemented here');
   }
-  
+
   function startTranslation() {
     alert('Translation functionality will be implemented here');
   }
