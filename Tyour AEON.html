@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  button {
+    display: inline-block;
+      background-color: #3c84cc;
+      color: #fff;
+      padding: 15px 30px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      margin-right: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  button:hover {
+    background-color: #081108;
+  }
+
+  #textInput {
+
+    display: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>TRY AEON FEATURES</h1>
+
+  <div class="button-container">
+    <button onclick="startVoiceToText()">Voice to Text</button>
+  </div>
+
+  <div class="button-container">
+    <button onclick="startTextToVoice()">Text to Voice</button>
+  </div>
+
+  <div class="button-container">
+    <button onclick="setReminder()">Set Reminder</button>
+  </div>
+
+  <div class="button-container">
+    <button onclick="startTranslation()">Translation</button>
+  </div>
+
+  <textarea id="textInput" rows="4" placeholder="Enter text here"></textarea>
+</div>
+
+<script>
+  function startVoiceToText() {
+    alert('Voice to Text functionality will be implemented here');
+  }
+  
+  function startTextToVoice() {
+    let text = prompt("Enter the text you want to convert to speech:");
+    
+if (text !== null && text.trim() !== "") {
+    document.getElementById('textInput').style.display = 'block';
+    document.getElementById('textInput').value = text;
+    
+    let utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-GB'; // Specifying UK English
+    window.speechSynthesis.speak(utterance);
+} else {
+    alert('Please enter some text.');
+}
+
+
+  }
+  
+  function setReminder() {
+    alert('Set Reminder functionality will be implemented here');
+  }
+  
+  function startTranslation() {
+    alert('Translation functionality will be implemented here');
+  }
+</script>
+
+</body>
+</html>
