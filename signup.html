@@ -85,21 +85,5 @@
     </form>
   </div>
 
-  <script>
-    function submitForm() {
-      var form = document.getElementById("registerForm");
-      var formData = new FormData(form);
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/register"); // Assuming you have a server endpoint for registration
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          alert("Account created successfully!");
-          form.reset(); // Reset the form after successful submission
-        }
-      };
-      xhr.send(JSON.stringify(Object.fromEntries(formData)));
-    }
-  </script>
 </body>
 </html>
