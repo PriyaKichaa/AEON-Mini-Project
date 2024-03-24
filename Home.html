@@ -10,20 +10,24 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            background-image: url(back.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 600px;
             margin: 100px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color:rgba(5, 39, 78, 0.7);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h1 {
-            color: #333;
+            color: #e7dede;
         }
 
         .input-wrapper {
@@ -68,10 +72,41 @@
         <div id="response"></div>
     </div>
     <script>
+        // Function to generate bot response based on user input
+        function generateBotResponse(userInput) {
+            // Convert user input to lowercase for easier comparison
+            userInput = userInput.toLowerCase();
+
+            // Define bot responses for different user inputs
+            const responses = {
+                'hi':'hi how can i help you',
+                'hello': 'Hi there!',
+                'how are you': 'I am just a bot, but thanks for asking!',
+                'what is your name': 'I am AEON.',
+                'bye': 'Goodbye! Have a great day!',
+                'what time is it': new Date().toLocaleTimeString(),
+                'what is the weather like': 'I\'m sorry, I don\'t have access to weather information.'
+                // Add more responses as needed
+            };
+
+            // Check if the user input matches any predefined responses
+            if (responses.hasOwnProperty(userInput)) {
+                return responses[userInput];
+            } else {
+                return 'Sorry, I didn\'t understand that.';
+            }
+        }
+
+        // Event listener for the "Speak" button click
         document.getElementById("speakBtn").addEventListener("click", function() {
             var userInput = document.getElementById("userInput").value;
             document.getElementById("response").innerText = "You asked: " + userInput;
-            // Here you can add code to trigger the voice assistant and process the user input
+            
+            // Get bot response based on user input
+            var responseText = generateBotResponse(userInput);
+            
+            // Display bot response
+            document.getElementById("response").innerText = "Bot: " + responseText;
         });
     </script>
 </body>
