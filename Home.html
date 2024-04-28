@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            background-image: url(back.jpg);
             background-repeat: no-repeat;
             background-size: 100% 100%;
             min-height: 100vh;
@@ -44,7 +43,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #543ccc;
             color: #fff;
             border: none;
             border-radius: 0 5px 5px 0;
@@ -53,13 +52,23 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #543ccc;
         }
 
         #response {
             margin-top: 20px;
             font-weight: bold;
         }
+        video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire viewport */
+    z-index: -1; /* Place the video behind other content */
+  }
+
     </style>
 </head>
 <body>
@@ -71,6 +80,11 @@
         </div>
         <div id="response"></div>
     </div>
+    <video autoplay muted loop style="position: fixed; top: 0; left: 0; min-width: 100%; min-height: 100%;">
+        <source src="back.mp4" type="video/mp4">
+        <!-- Provide fallback content -->
+        Your browser does not support the video tag.
+      </video>
     <script>
         // Function to generate bot response based on user input
         function generateBotResponse(userInput) {
