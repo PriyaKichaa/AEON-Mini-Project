@@ -36,7 +36,6 @@
     text-align: center;
     margin-bottom: 20px;
   }
-
   button {
     display: inline-block;
     background-color: #3c84cc;
@@ -71,6 +70,10 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
+  another button{
+    text-align: center;
+    margin-bottom: 20px;
+  }
 </style>
 </head>
 <body>
@@ -85,18 +88,19 @@
   <div class="button-container">
     <button onclick="startTextToVoice()">Text to Voice</button>
   </div>
-
   <div class="button-container">
-    <button onclick="setReminder()">Set Reminder</button>
+    <a href=translate.html><button>Translate Text</button></href>
   </div>
 
   <div class="button-container">
-    <button onclick="startTranslation()">Translation</button>
+    <a href=Home.html><button>spell checker</button></href>
   </div>
+
 
   <textarea id="textInput" rows="4" placeholder="Enter text here"></textarea>
   <textarea id="voiceInput" rows="4" placeholder="Transcribed text will appear here"></textarea>
 </div>
+
 
 <script>
   function startVoiceToText() {
