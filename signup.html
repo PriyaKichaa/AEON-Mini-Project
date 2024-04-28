@@ -20,7 +20,7 @@
             max-width: 400px;
             margin: 100px auto;
             padding: 20px;
-            background-color: rgba(5, 39, 78, 0.7);
+            background-color: rgba(20, 5, 78, 0.7);
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(238, 218, 218, 0.1);
             text-align: center;
@@ -33,11 +33,13 @@
 
         .input-group {
             margin-bottom: 15px;
+            text-align: left; /* Align label to left */
         }
 
         label {
-            display: block;
+            display: inline-block;
             margin-bottom: 5px;
+            text-align: left; /* Align label to left */
         }
 
         input[type="text"],
@@ -53,7 +55,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color:#163cd5;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -62,15 +64,37 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #061683;
         }
 
         p {
             margin-top: 20px;
         }
+        video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire viewport */
+    z-index: -1; /* Place the video behind other content */
+  }
     </style>
 </head>
 <body>
+  <script>
+    function submitForm() {
+        // Get form values
+        var username = document.getElementById("username").value;
+
+        // Store username in local storage
+        localStorage.setItem("username", username);
+
+        // Redirect user to "Try Your Aeon" page
+        window.location.href = "Tyour AEON.html";
+    }
+</script>
+
   <div class="container">
     <h2>Register</h2>
     <form id="registerForm">
@@ -93,6 +117,11 @@
       <button type="button" onclick="submitForm()">Create Account</button>
     </form>
   </div>
+  <video autoplay muted loop style="position: fixed; top: 0; left: 0; min-width: 100%; min-height: 100%;">
+    <source src="back.mp4" type="video/mp4">
+    <!-- Provide fallback content -->
+    Your browser does not support the video tag.
+  </video>
 
 </body>
 </html>
